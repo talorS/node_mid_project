@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascripts/script.js"></script>
+</head>
+
+<body>
+
+    <div class="text-center">
+        <h2>Menu Page</h2>
+        <p>
+          <strong>Welcome back ,<%= name %> ! </strong>
+          <a href="/logout" class="link-info">Logout</a>
+        </p>
+
+        <a href="/movie/search" class="link-primary">Search for movies</a><br />
+        <a href="/movie/createForm" class="link-primary">Create new movie</a><br />
+        <% if (admin) { %>
+            <a href="/users/edit" class="link-primary">Edit Users</a><br />
+            <% } %>
+    </div>
+
+</body>
+
+</html>

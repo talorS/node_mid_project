@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css"
+        integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q=="
+        crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js"
+        integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw=="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/javascripts/script.js"></script>
+</head>
+
+<body>
+
+    <div class="text-center">
+        <h2>Movie Data Page</h2>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Genres</th>
+                    <th scope="col">Language</th>
+                    <th scope="col">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <%= data.id %>
+                    </td>
+                    <td>
+                        <%= data.name %>
+                    </td>
+                    <td>
+                        <%= data.genres %>
+                    </td>
+                    <td>
+                        <%= data.language %>
+                    </td>
+                    <% if (data.image) { %>
+                        <td><img src="<%= data.image.medium %>" width="100" height="100"></td>
+                        <% } %>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/menu" class="link-primary">Back to Menu</a> <br/>
+        <a href="javascript:history.back()" class="link-primary">Back</a>
+    </div>
+
+</body>
+
+</html>

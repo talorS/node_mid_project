@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "created_date": "2.6.2021",
+      "num_of_transactions": 3,
+      "operations": {
+        "used": 5,
+        "date": "9.6.2021"
+      },
+      "admin": true
+    },
+    {
+      "username": "talor115",
+      "password": "123456",
+      "created_date": "3.6.2021",
+      "num_of_transactions": 2,
+      "operations": {
+        "used": 2,
+        "date": "10.6.2021"
+      },
+      "admin": false
+    }
+  ]
+}

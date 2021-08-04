@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css"
+        integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q=="
+        crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js"
+        integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw=="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="text-center">
+        <h2>Users Management Page</h2>
+        <% if (msg) { %>
+            <div class="alert alert-success">
+              <%= msg %>
+            </div>
+            <% } %>
+        <% users.forEach(function(user) { %>
+            <ul class="list-group border border-dark list-group-flush list-group-horizontal"
+            style="align-items: center; width: 30%;margin-left: 500px;">
+                <li class="list-group-item">
+                    <%= user.username %>
+                </li>
+                    <li class="list-group-item"><a href="/users/delete/<%= user.username %>"
+                        class="<%= user.admin ? 'btn disabled' : '' %>">
+                        Delete User
+                    </a></li>
+                <li class="list-group-item"><a href="/users/userData/<%= JSON.stringify(user) %>">
+                        Update User
+                    </a></li>
+            </ul>
+            <% }) %>
+                <a href="/users/userData" class="link-primary">Add New User</a><br />
+                <a href="/menu" class="link-primary">Back</a>
+    </div>
+
+</body>
+
+</html>

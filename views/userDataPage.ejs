@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css"
+        integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q=="
+        crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js"
+        integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw=="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="text-center">
+        <h2>User Data Page</h2>
+        <% if (msg) { %>
+            <div class="alert alert-success">
+                <%= msg %>
+            </div>
+            <% } %>
+
+                <% if (locals.user) { %>
+                    <form action="/users/update" method="POST">
+                        <div class="form-group row">
+                            <label for="username" class="col-form-label">User Name:</label>
+                            <input type="text" name="username" value="<%= user.username %>"
+                                style="width: 10%; margin-left: 650px;text-align: center;color: #787878;" readonly>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pwd" class="col-form-label">Password:</label>
+                            <input type="password" name="pwd" value="<%= user.password %>"
+                                style="width: 10%; margin-left: 650px;text-align: center;">
+                        </div>
+                        <div class="form-group row">
+                            <label for="created" class="col-form-label">Created Date:</label>
+                            <input type="text" name="created" value="<%= user.created_date %>"
+                                style="width: 10%; margin-left: 650px;text-align: center;color: #787878;" readonly>
+                        </div>
+                        <div class="form-group row">
+                            <label for="credits" class="col-form-label">Num Of Transactions:</label>
+                            <input type="number" name="credits"
+                                style="width: 10%; margin-left: 650px;text-align: center;"
+                                value="<%= user.num_of_transactions %>">
+                        </div>
+                        <div class="form-group row">
+                            <label for="op_used" class="col-form-label">Operations Used:</label>
+                            <input type="text" name="op_used" value="<%= user.operations.used %>"
+                                style="width: 10%; margin-left: 650px;text-align: center;color: #787878;" readonly>
+                        </div>
+                        <div class="form-group row">
+                            <label for="created" class="col-form-label">Due Date:</label>
+                            <input type="text" name="op_date" value="<%= user.operations.date %>"
+                                style="width: 10%; margin-left: 650px;text-align: center;color: #787878;" readonly>
+                        </div>
+                        <div class="form-check row">
+                            <label for="admin" class="form-check-label">Admin</label>
+                            <% let checked = user.admin ? "checked" : "" %>
+                            <input type="checkbox" name="admin" onclick="return false;" <%= checked %>>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                    <% } else{ %>
+                        <form action="/users/insert" method="POST">
+                            <div class="form-group row">
+                                <label for="username" class="col-form-label">User Name:</label>
+                                <input type="text" name="username" required
+                                    style="width: 10%; margin-left: 650px;text-align: center;">
+                            </div>
+                            <div class="form-group row">
+                                <label for="pwd" class="col-form-label">Password:</label>
+                                <input type="password" name="pwd" required
+                                    style="width: 10%; margin-left: 650px;text-align: center;">
+                            </div>
+                            <div class="form-group row">
+                                <label for="created" class="col-form-label">Created Date:</label>
+                                <input type="date" name="created" 
+                                    style="width: 10%; margin-left: 650px;text-align: center;">
+                            </div>
+                            <div class="form-group row">
+                                <label for="credits" class="col-form-label">Num Of Transactions:</label>
+                                <input type="number" name="credits" min="0" required
+                                    style="width: 10%; margin-left: 650px;text-align: center;">
+                            </div>
+                            <div class="form-check row">
+                                <label for="admin" class="form-check-label">Admin</label>
+                                <input type="checkbox" name="admin">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                        <% } %>
+                            <a href="/users/edit" class="link-primary">Back</a>
+    </div>
+
+</body>
+
+</html>

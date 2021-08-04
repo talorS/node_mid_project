@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css"
+        integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q=="
+        crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js"
+        integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw=="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="text-center">
+        <h2>Search Result Page</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Movie Name</th>
+                    <th scope="col">Same Genre List</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(function(movie,index) { %>
+                    <tr>
+                        <th scope="row">
+                            <%= index + 1 %>
+                        </th>
+                        <td>
+                            <a href="/movie/<%= movie.id %>">
+                                <%= movie.name %>
+                            </a>
+                        </td>
+                        <td>
+                            <ul class="list-group">
+                                <% movie.list.forEach(function(x) { %>
+                                    <li class="list-group-item">
+                                        <a href="/movie/<%= x.id %>">
+                                            <%= x.name %>
+                                        </a>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+        <a href="/menu" class="link-primary">Back to Menu</a>
+    </div>
+
+</body>
+
+</html>

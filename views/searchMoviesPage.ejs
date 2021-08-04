@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css"
+        integrity="sha512-N415hCJJdJx+1UBfULt+i+ihvOn42V/kOjOpp1UTh4CZ70Hx5bDlKryWaqEKfY/8EYOu/C2MuyaluJryK1Lb5Q=="
+        crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js"
+        integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw=="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/javascripts/script.js"></script>
+</head>
+
+<body>
+
+    <div class="text-center">
+        <h2>Search Movies Page</h2>
+        <% if (msg) { %>
+            <div class="alert alert-danger">
+                <%= msg %>
+            </div>
+            <% } %>
+                <form action="/movie/search/result" method="POST">
+                    <input type="text" class="fadeIn second" name="name" placeholder="Name"><br />
+                    <label placeholder="Genre" class="fadeIn third">Genre</label>
+                    <select name="genre" class="form-select form-select-sm" aria-label=".form-select-sm example"
+                        style="width: 50%;margin-left: 350px;">
+                        <option aria-label="None" value="" selected disabled>Select an option</option>>
+                            <% genres.forEach(function(genre) { %>
+                        <option value="<%= genre %>">
+                            <%= genre %>
+                        </option>
+                        <% }) %>
+                    </select> <br />
+                    <label placeholder="Languages" class="fadeIn third">Language</label>
+                    <select name="language" class="form-select form-select-sm" aria-label=".form-select-sm example"
+                        style="width: 50%;margin-left: 350px;">
+                        <option aria-label="None" value="" selected disabled>Select an option</option>>
+                            <% languages.forEach(function(lang) { %>
+                        <option value="<%= lang %>">
+                            <%= lang %>
+                        </option>
+                        <% }) %>
+                    </select> <br />
+                    <input type="submit" class="fadeIn fourth" value="Search">
+                </form>
+                <a href="/menu" class="link-primary">Back</a>
+    </div>
+
+</body>
+
+</html>
